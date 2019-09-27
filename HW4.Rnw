@@ -1,0 +1,65 @@
+\documentclass{article}
+
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\begin{flushleft}
+
+Karla Dulay\\
+STAT 575\\
+Homework 4\\
+\vspace*{2\baselineskip}
+
+Problem 1\\
+In R, plot the function given in Homework 2, p. 76, Problem 3.4 (a).\\
+Be sure to give a title to your plot.\\
+
+<<1a, echo=TRUE, eval=TRUE, background="white", include=TRUE, fig=TRUE>>=
+x=seq(0,10,by=0.01)
+Sx=exp(x-.70*2^x-1)
+plot(x,Sx,type="l")
+title("Sx for 3-4(a)")
+@
+
+Problem 2 (a)\\
+Create a sequence of values of x from 0 to 10. Use the R function dchisq to plot the
+PDF, fX(x) with r = 3. Be sure to give a title to your plot.\\
+
+<<2a, echo=TRUE, eval=TRUE, background="white", include=TRUE, fig=TRUE>>=
+x=seq(0,10,by=0.01)
+pdf=dchisq(x,3,ncp=0,log=FALSE)
+plot(x,pdf,type="l")
+title("PDF with r=3")
+@
+
+Problem 2 (b)\\
+Create a sequence of values of x from 0 to 10. Use the R function pchisq to plot the
+CDF, FX(x) with r = 3. Be sure to give a title to your plot.\\
+<<2b, echo=TRUE, eval=TRUE, background="white", include=TRUE, fig=TRUE>>=
+x=seq(0,10,by=0.01)
+cdf=pchisq(x,3,lower.tail=TRUE,log.p=FALSE)
+plot(x,cdf,type="l")
+title("CDF with r=3")
+@
+
+Problem 2 (c)\\
+Create a sequence of values of x from 0 to 10. Use R to plot the SDF, SX(x) with
+r = 3. Be sure to give a title to your plot.\\
+<<2c, echo=TRUE, eval=TRUE, background="white", include=TRUE, fig=TRUE>>=
+x=seq(0,10,by=0.01)
+Sx=1-cdf
+plot(x,Sx,type="l")
+title("Sx with r=3")
+@
+
+Problem 2 (d)\\
+Create a sequence of values of x from 0 to 10. Use R to plot the HRF, ??X(x) with
+r = 3. Be sure to give a title to your plot.\\
+<<2d, echo=TRUE, eval=TRUE, background="white", include=TRUE, fig=TRUE>>=
+x=seq(0,10,by=0.01)
+Hrf=pdf/Sx
+plot(x,Hrf,type="l")
+title("HRF with r=3")
+@
+\end{flushleft}
+\end{document}
